@@ -176,14 +176,13 @@ angular.module('angular-slick', [])
                             ) if attrs.onSwipe
 
                         # Watch Functions
+                        $scope.$watch 'draggable', (newValue, oldValue)->
+                            if newValue?
+                                slider.slick 'slickSetOption', 'draggable', newValue == 'true', false
+
                         currentIndexWatch = $scope.$watch 'currentIndex', (newValue, oldValue)->
                             if newValue?
                                 slider.slick 'slickGoTo', newValue
-
-                        $scope.$watch 'draggable', (newValue, oldValue)->
-                            if newValue?
-                                slider.slickSetOption 'draggable', newValue, false
-                            console.log('Its Working!!')
 
 
                 if $scope.initOnload
