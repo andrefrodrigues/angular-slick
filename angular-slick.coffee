@@ -180,6 +180,11 @@ angular.module('angular-slick', [])
                             if newValue?
                                 slider.slick 'slickGoTo', newValue
 
+                        $scope.$watch 'draggable', (newValue, oldValue)->
+                            if newValue?
+                                slider.slickSetOption 'draggable', newValue, false
+                            console.log('Its Working!!')
+
 
                 if $scope.initOnload
                     isInitialized = false
